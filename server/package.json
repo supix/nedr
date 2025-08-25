@@ -2,15 +2,26 @@
   "name": "server",
   "version": "1.0.0",
   "private": true,
-  "type": "module",
-  "description": "Express server scaffold",
+  "description": "MEAN POC backend (Express + MongoDB)",
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "node --watch src/index.js"
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/app.js",
+    "dev": "nodemon --watch src --ext ts --exec ts-node src/app.ts",
+    "seed": "ts-node src/seed/seedTerms.ts"
   },
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^5.0.1",
+    "express": "^4.19.2",
+    "mongoose": "^8.7.0",
     "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^4.17.21",
+    "@types/morgan": "^1.9.10",
+    "@types/node": "^20.14.12",
+    "nodemon": "^3.1.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
   }
 }

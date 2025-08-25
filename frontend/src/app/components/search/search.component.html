@@ -1,0 +1,11 @@
+<div class="p-inputgroup w-full md:w-8 lg:w-6">
+  <input
+    type="text"
+    pInputText
+    placeholder="Cerca sinonimi..."
+    [(ngModel)]="query"
+    aria-label="Search synonyms"
+    (keyup.enter)="onSubmit()"
+  />
+  <button pButton type="button" (click)="onSubmit()" label="Cerca" icon="pi pi-search"></button>
+</div>

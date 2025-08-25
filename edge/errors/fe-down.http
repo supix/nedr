@@ -1,0 +1,30 @@
+HTTP/1.0 503 Service Unavailable
+Cache-Control: no-cache
+Connection: close
+Content-Type: text/html; charset=utf-8
+
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Frontend offline</title>
+  <style>
+    html, body { height: 100%; margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    .wrap { display:flex; align-items:center; justify-content:center; height:100%; background: #f8f9fa; color:#333; }
+    .card { background:#fff; padding:2rem; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.08); max-width: 640px; }
+    h1 { margin:0 0 0.5rem; font-size:1.6rem; }
+    p { margin:0.25rem 0; line-height:1.5; }
+    .muted { color:#6c757d; font-size:0.9rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Tutte le repliche frontend sono offline</h1>
+      <p>Il reverse proxy non riesce a raggiungere alcuna istanza del frontend al momento.</p>
+      <p class="muted">Riprovare tra qualche istante o contattare l'amministratore del sistema.</p>
+    </div>
+  </div>
+</body>
+</html>

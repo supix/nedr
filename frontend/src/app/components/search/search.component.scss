@@ -1,0 +1,26 @@
+.search-container {
+  /* container for potential future wrapping */
+}
+
+:host ::ng-deep .p-inputgroup {
+  width: 100%;
+  max-width: 720px;
+  margin-inline: auto;
+  align-items: stretch; /* ensure children match height */
+}
+:host ::ng-deep .p-inputgroup > .p-inputtext {
+  flex: 1 1 auto;
+}
+:host ::ng-deep .p-inputgroup > .p-button {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  height: auto; /* stretch with input */
+  align-self: stretch;
+}
+
+/* Responsive tweaks */
+@media (max-width: 576px) {
+  :host ::ng-deep .p-inputgroup {
+    max-width: 100%;
+  }
+}

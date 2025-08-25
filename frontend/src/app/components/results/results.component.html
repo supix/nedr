@@ -1,0 +1,35 @@
+<ng-container *ngIf="!loading; else loadingTpl">
+  <div *ngIf="!query" class="p-3 text-600">Inserisci una parola per iniziare la ricerca.</div>
+  <div *ngIf="query" class="grid">
+    <div class="col-12 md:col-6">
+      <p-card header="Termini trovati" *ngIf="terms?.length; else emptyTerms">
+        <div class="flex gap-2 flex-wrap">
+          <p-chip *ngFor="let t of terms" [label]="t"></p-chip>
+        </div>
+      </p-card>
+      <ng-template #emptyTerms>
+        <p-card header="Termini trovati">
+          <div>Nessun termine corrispondente.</div>
+        </p-card>
+      </ng-template>
+    </div>
+    <div class="col-12 md:col-6">
+      <p-card header="Sinonimi (unici)" *ngIf="synonyms?.length; else emptySyns">
+        <div class="flex gap-2 flex-wrap">
+          <p-chip *ngFor="let s of synonyms" [label]="s"></p-chip>
+        </div>
+      </p-card>
+      <ng-template #emptySyns>
+        <p-card header="Sinonimi (unici)">
+          <div>Nessun sinonimo disponibile.</div>
+        </p-card>
+      </ng-template>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #loadingTpl>
+  <div class="flex justify-content-center p-4">
+    <p-progressSpinner styleClass="w-3rem h-3rem" strokeWidth="4"></p-progressSpinner>
+  </div>
+</ng-template>
