@@ -1,34 +1,18 @@
-# syntax=docker/dockerfile:1
+FROM node:18-alpine AS build
 
-# 1) Build Angular app using Node
-FROM node:20-alpine AS build
-ENV NG_CLI_ANALYTICS=ci
-WORKDIR /app/frontend
+WORKDIR /app
 
-# Copy only necessary files to avoid context issues and improve caching
 COPY package*.json ./
-COPY angular.json ./
-COPY tsconfig*.json ./
-COPY proxy.conf.json ./
-COPY src ./src
-COPY public ./public
 
-# Install dependencies and build for production
-# Use npm ci if lockfile exists, otherwise fallback to npm install
-RUN if [ -f package-lock.json ]; then npm ci; else npm install; fi \
-    && npm run build -- --configuration production
+RUN npm ci
 
-# 2) NGINX stage to serve built assets and proxy /api to the backend
-FROM nginx:1.27-alpine
+COPY . .
 
-# Install curl for container healthcheck
-RUN apk add --no-cache curl
+RUN npm run build -- --configuration production
 
-# Copy NGINX config that serves SPA and proxies /api to the server service
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+FROM nginx:stable-alpine
 
-# Copy built Angular output into NGINX html root (Angular application builder outputs to 'browser')
-COPY --from=build /app/frontend/dist/frontend/browser/ /usr/share/nginx/html/
+COPY --from=build /app/dist/frontend/browser /usr/share/nginx/html
 
 # Generate runtime config file consumed by InstanceBadge
 ARG FRONTEND_INSTANCE_ID=frontend-1
