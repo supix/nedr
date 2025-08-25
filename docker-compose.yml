@@ -1,4 +1,4 @@
-name: express-angular-nginx
+name: nedr
 
 services:
   mongo:
@@ -9,7 +9,7 @@ services:
 
   server:
     build: ./server
-    image: express-angular-nginx-server:latest
+    image: nedr-server:latest
     environment:
       - NODE_ENV=production
       - PORT=3000
@@ -36,7 +36,7 @@ services:
       args:
         FRONTEND_INSTANCE_ID: frontend-1
         APP_NAME: MEAN POC
-    image: express-angular-nginx-frontend1:latest
+    image: nedr-frontend1:latest
     expose:
       - "80"
     healthcheck:
@@ -51,7 +51,7 @@ services:
       args:
         FRONTEND_INSTANCE_ID: frontend-2
         APP_NAME: MEAN POC
-    image: express-angular-nginx-frontend2:latest
+    image: nedr-frontend2:latest
     expose:
       - "80"
     healthcheck:
@@ -61,7 +61,7 @@ services:
 
   edge:
     build: ./edge
-    image: express-angular-nginx-edge:latest
+    image: nedr-edge:latest
     ports:
       - "8080:80"
     depends_on:
