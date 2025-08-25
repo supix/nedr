@@ -27,8 +27,8 @@ RUN apk add --no-cache curl
 # Copy NGINX config that serves SPA and proxies /api to the server service
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Copy built Angular output into NGINX html root
-COPY --from=build /app/frontend/dist/frontend/ /usr/share/nginx/html/
+# Copy built Angular output into NGINX html root (Angular application builder outputs to 'browser')
+COPY --from=build /app/frontend/dist/frontend/browser/ /usr/share/nginx/html/
 
 # Generate runtime config file consumed by InstanceBadge
 ARG FRONTEND_INSTANCE_ID=frontend-1

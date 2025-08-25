@@ -14,7 +14,7 @@ import { InstanceBadgeComponent } from './components/instance-badge/instance-bad
   template: `
     <p-toast></p-toast>
     <header class="navbar">
-      <div class="nav-title">MEAN POC</div>
+      <div class="nav-title">NEDR POC</div>
       <div class="flex align-items-center gap-2">
         <button class="p-button p-button-sm p-button-outlined" (click)="onDownload()">Download file</button>
         <app-instance-badge></app-instance-badge>
