@@ -1,0 +1,23 @@
+.git
+.gitignore
+.idea
+.vscode
+.DS_Store
+
+# Frontend
+frontend/node_modules
+frontend/dist
+frontend/.angular
+frontend/.angular/cache
+frontend/coverage
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/pnpm-lock.yaml
+
+# Server
+server/node_modules
+server/npm-debug.log*
+server/yarn-debug.log*
+server/yarn-error.log*
+server/.pnpm-store

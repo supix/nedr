@@ -1,0 +1,14 @@
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-lock.yaml
+.npmrc
+.git
+.gitignore
+.vscode
+.angular
+.angular/cache
+dist
+coverage
+Dockerfile

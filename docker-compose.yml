@@ -1,0 +1,36 @@
+name: express-angular-nginx
+
+services:
+  server:
+    build: ./server
+    image: express-angular-nginx-server:latest
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    expose:
+      - "3000"
+    healthcheck:
+      test: ["CMD", "sh", "-c", "curl -fsS http://localhost:3000/api/health > /dev/null"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - app
+
+  web:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    image: express-angular-nginx-web:latest
+    ports:
+      - "80:80"
+    depends_on:
+      server:
+        condition: service_healthy
+    networks:
+      - app
+
+networks:
+  app:
+    driver: bridge
