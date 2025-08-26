@@ -8,7 +8,7 @@ import { ButtonModule } from 'primeng/button';
   standalone: true,
   imports: [FormsModule, InputTextModule, ButtonModule],
   templateUrl: './search.component.html',
-  styleUrl: './search.component.scss'
+  styleUrls: ['./search.component.scss']
 })
 export class SearchComponent {
   query = '';

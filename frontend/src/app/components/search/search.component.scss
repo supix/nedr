@@ -1,26 +1,43 @@
-.search-container {
-  /* container for potential future wrapping */
+/* tiene input e bottone sulla stessa riga (già fatto) */
+:host ::ng-deep .p-inputgroup {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
 }
 
-:host ::ng-deep .p-inputgroup {
-  width: 100%;
-  max-width: 720px;
-  margin-inline: auto;
-  align-items: stretch; /* ensure children match height */
-}
+/* l’input prende lo spazio */
 :host ::ng-deep .p-inputgroup > .p-inputtext {
   flex: 1 1 auto;
-}
-:host ::ng-deep .p-inputgroup > .p-button {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  height: auto; /* stretch with input */
-  align-self: stretch;
+  width: auto;
+  /* unifica con il bottone a destra */
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: 0; /* elimina il doppio bordo al centro */
 }
 
-/* Responsive tweaks */
-@media (max-width: 576px) {
-  :host ::ng-deep .p-inputgroup {
-    max-width: 100%;
+/* il bottone si “incastra” all’input */
+:host ::ng-deep .p-inputgroup > .p-button {
+  flex: 0 0 auto;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  /* in caso il tema metta un’ombra diversa, la togliamo per continuità */
+  box-shadow: none;
+  margin: 0;      /* evita spazi indesiderati */
+}
+
+/* opzionale: stessa altezza perfetta */
+:host ::ng-deep .p-inputgroup > .p-button .p-button-label,
+:host ::ng-deep .p-inputgroup > .p-inputtext {
+  line-height: 1.25rem;
+}
+
+/* nasconde la label su schermi piccoli */
+:host ::ng-deep .hidden-label-sm .p-button-label {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  :host ::ng-deep .hidden-label-sm .p-button-label {
+    display: inline; /* riappare da tablet in su */
   }
 }
