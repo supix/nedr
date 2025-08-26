@@ -86,6 +86,7 @@ On startup, if `SEED_ON_START=true`, the backend performs an idempotent seed wit
 ## Notes
 - FE instance badge: generated at frontend container build into `/assets/app-config.json` with `{ instanceId, appName }`.
 - The background image uses `public/assets/background.svg` as a lightweight placeholder; you can replace it with `background.jpg` keeping the path in `src/styles.scss`.
+- Edge uses only HAProxy. The file `edge/nginx.conf` is not used at runtime; it is kept only as a reference/example. All proxying and load balancing are handled by HAProxy (`edge/haproxy.cfg`).
 
 ## Possible extensions
 - Validate `query` with zod/joi.

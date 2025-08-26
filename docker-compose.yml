@@ -35,7 +35,7 @@ services:
       dockerfile: Dockerfile
       args:
         FRONTEND_INSTANCE_ID: frontend-1
-        APP_NAME: MEAN POC
+        APP_NAME: NEDR POC
     image: nedr-frontend1:latest
     expose:
       - "80"
@@ -50,7 +50,7 @@ services:
       dockerfile: Dockerfile
       args:
         FRONTEND_INSTANCE_ID: frontend-2
-        APP_NAME: MEAN POC
+        APP_NAME: NEDR POC
     image: nedr-frontend2:latest
     expose:
       - "80"
