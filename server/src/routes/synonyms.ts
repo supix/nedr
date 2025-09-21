@@ -13,10 +13,10 @@ router.get('/', async (req, res, next) => {
       return res.status(400).json({ error: 'query parameter is required' });
     }
 
-    const prefix = new RegExp('^' + escapeRegex(q), 'i');
+    const searchkey = new RegExp(escapeRegex(q), 'i');
 
     const docs = await Term.find({
-      $or: [{ term: prefix }, { synonyms: { $elemMatch: { $regex: prefix } } }],
+      $or: [{ term: searchkey }, { synonyms: { $elemMatch: { $regex: searchkey } } }],
     }).lean();
 
     const foundTerms = docs.map((d) => d.term);
